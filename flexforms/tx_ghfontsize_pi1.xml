@@ -1,0 +1,145 @@
+<T3DataStructure>
+ <meta type="array">
+  <langDisable>1</langDisable>
+ </meta>
+ <sheets type="array">
+  <sDEF type="array">
+   <ROOT type="array">
+    <TCEforms type="array">
+     <sheetTitle>LLL:EXT:gh_fontsize/locallang_db.php:tt_content.pi_flexform.sheet_general</sheetTitle>
+    </TCEforms>
+    <type>array</type>
+    <el>
+    </el>
+   </ROOT>
+  </sDEF>
+  <Allgemein type="array">
+   <ROOT type="array">
+    <TCEforms type="array">
+     <sheetTitle>LLL:EXT:gh_fontsize/locallang_db.php:tt_content.pi_flexform.sheet_Allgemein</sheetTitle>
+    </TCEforms>
+    <type>array</type>
+    <el type="array">
+     <menuType type="array">
+      <TCEforms type="array">
+       <config type="array">
+        <type_t3dev>select</type_t3dev>
+        <maxitems>1</maxitems>
+        <size></size>
+        <type>select</type>
+        <items type="array">
+         <numIndex index="0" type="array">
+          <numIndex index="0">LLL:EXT:gh_fontsize/locallang_db.php:tt_content.pi_flexform.field_menuType.I.0</numIndex>
+          <numIndex index="1" type="integer">0</numIndex>
+         </numIndex>
+         <numIndex index="1" type="array">
+          <numIndex index="0">LLL:EXT:gh_fontsize/locallang_db.php:tt_content.pi_flexform.field_menuType.I.1</numIndex>
+          <numIndex index="1" type="integer">1</numIndex>
+         </numIndex>
+        </items>
+       </config>
+       <label>LLL:EXT:gh_fontsize/locallang_db.php:tt_content.pi_flexform.field_menuType</label>
+      </TCEforms>
+     </menuType>
+    </el>
+   </ROOT>
+  </Allgemein>
+  <Bilder type="array">
+   <ROOT type="array">
+    <TCEforms type="array">
+     <sheetTitle>LLL:EXT:gh_fontsize/locallang_db.php:tt_content.pi_flexform.sheet_Text</sheetTitle>
+    </TCEforms>
+    <type>array</type>
+    <el type="array">
+     <imageLocation type="array">
+      <TCEforms type="array">
+       <config type="array">
+        <type_t3dev>input</type_t3dev>
+        <size>48</size>
+        <max>100</max>
+        <type>input</type>
+       </config>
+       <label>LLL:EXT:gh_fontsize/locallang_db.php:tt_content.pi_flexform.field_imageLocation</label>
+      </TCEforms>
+     </imageLocation>
+     <smallerImageFile type="array">
+      <TCEforms type="array">
+       <config type="array">
+        <type_t3dev>input</type_t3dev>
+        <size></size>
+        <max>100</max>
+        <type>input</type>
+       </config>
+       <label>LLL:EXT:gh_fontsize/locallang_db.php:tt_content.pi_flexform.field_smallerImageFile</label>
+      </TCEforms>
+     </smallerImageFile>
+     <resetImageFile type="array">
+      <TCEforms type="array">
+       <config type="array">
+        <type_t3dev>input</type_t3dev>
+        <size></size>
+        <max>100</max>
+        <type>input</type>
+       </config>
+       <label>LLL:EXT:gh_fontsize/locallang_db.php:tt_content.pi_flexform.field_resetImageFile</label>
+      </TCEforms>
+     </resetImageFile>
+     <largerImageFile type="array">
+      <TCEforms type="array">
+       <config type="array">
+        <type_t3dev>input</type_t3dev>
+        <size></size>
+        <max>100</max>
+        <type>input</type>
+       </config>
+       <label>LLL:EXT:gh_fontsize/locallang_db.php:tt_content.pi_flexform.field_largerImageFile</label>
+      </TCEforms>
+     </largerImageFile>
+    </el>
+   </ROOT>
+  </Bilder>
+  <Text type="array">
+   <ROOT type="array">
+    <TCEforms type="array">
+     <sheetTitle>LLL:EXT:gh_fontsize/locallang_db.php:tt_content.pi_flexform.sheet_Bilder</sheetTitle>
+    </TCEforms>
+    <type>array</type>
+    <el type="array">
+     <smallerText type="array">
+      <TCEforms type="array">
+       <config type="array">
+        <type_t3dev>input</type_t3dev>
+        <size></size>
+        <max></max>
+        <type>input</type>
+       </config>
+       <label>LLL:EXT:gh_fontsize/locallang_db.php:tt_content.pi_flexform.field_smallerText</label>
+      </TCEforms>
+     </smallerText>
+     <resetText type="array">
+      <TCEforms type="array">
+       <config type="array">
+        <type_t3dev>input</type_t3dev>
+        <size></size>
+        <max></max>
+        <type>input</type>
+       </config>
+       <label>LLL:EXT:gh_fontsize/locallang_db.php:tt_content.pi_flexform.field_resetText</label>
+      </TCEforms>
+     </resetText>
+     <largerText type="array">
+      <TCEforms type="array">
+       <config type="array">
+        <type_t3dev>input</type_t3dev>
+        <size></size>
+        <max></max>
+        <type>input</type>
+       </config>
+       <label>LLL:EXT:gh_fontsize/locallang_db.php:tt_content.pi_flexform.field_largerText</label>
+      </TCEforms>
+     </largerText>
+    </el>
+   </ROOT>
+  </Text>
+ </sheets>
+</T3DataStructure>

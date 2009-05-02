@@ -1,0 +1,33 @@
+plugin.tx_ghfontsize_pi1 {
+	show = menu
+	baseValue = 100
+	increment = 10
+	parameterName = font-size
+	parameterUnit = %
+	cssElement = body
+	menuType = text
+	imageLocation = EXT:gh_fontsize/resources/images/
+	smallerImageFile = smaller.gif
+	resetImageFile = reset.gif
+	largerImageFile = larger.gif
+	smallerText = A
+	resetText = A
+	largerText = A
+	menuWrap = <ul>|</ul><br class="tx-ghfontsize-clear" />
+	elementWrap = <li>|</li>
+	styleWrap = <style type="text/css">|</style>
+
+	_CSS_DEFAULT_STYLE (
+		.tx-ghfontsize-pi1 {background-color: #eee; padding: 2px;}
+		.tx-ghfontsize-pi1 ul {margin: 0; padding: 0; list-style: none;}
+		.tx-ghfontsize-pi1 li {display: inline; float: left; padding: 2px; border: 1px solid black; margin: 2px;}
+		.tx-ghfontsize-pi1 a {text-decoration: none; }
+		.tx-ghfontsize-smaller {font-size: .8em; line-height: 1.5em;}
+		.tx-ghfontsize-reset {font-size: 1em; line-height: 1.2em;}
+		.tx-ghfontsize-larger {font-size: 1.2em; line-height: 1em;}
+		.tx-ghfontsize-clear {clear: left;}
+	)
+}
+
+page.headerData.9999 < plugin.tx_ghfontsize_pi1
+page.headerData.9999.show = style
