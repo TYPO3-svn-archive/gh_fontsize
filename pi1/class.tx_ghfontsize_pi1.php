@@ -26,13 +26,14 @@
  *
  *
  *
- *   50: class tx_ghfontsize_pi1 extends tslib_pibase
- *   64:     function main($content, $conf)
- *   88:     function renderMenu()
- *  116:     function renderStyles()
- *  129:     function calculateValue()
+ *   51: class tx_ghfontsize_pi1 extends tslib_pibase
+ *   65:     function main($content, $conf)
+ *   90:     function confFromFF()
+ *  132:     function renderMenu()
+ *  160:     function renderStyle()
+ *  173:     function calculateValue()
  *
- * TOTAL FUNCTIONS: 4
+ * TOTAL FUNCTIONS: 5
  * (This index is automatically created/updated by the extension "extdeveval")
  *
  */
@@ -68,16 +69,59 @@ class tx_ghfontsize_pi1 extends tslib_pibase {
 
 		switch($this->conf['show']) {
 		case 'menu':
+			$this->confFromFF();
 			$content = $this->renderMenu();
 			return $this->pi_wrapInBaseClass($content);
 			break;
 		case 'style':
 			$this->calculateValue();
-			$content = $this->renderStyles();
+			$content = $this->renderStyle();
 			return $content;
 			break;
 		}
 		return false;
+	}
+
+	/**
+	 * Get configuration from FlexForm
+	 *
+	 * @return void
+	 */
+	function confFromFF() {
+		$this->pi_initPIflexForm();
+
+		if( 2 == $this->pi_getFFvalue($this->cObj->data['pi_flexform'], 'menuType')) {
+			$this->conf['menuType'] = 'image';
+		}
+
+		if('image' == $this->conf['menuType']) {
+			if($this->pi_getFFvalue($this->cObj->data['pi_flexform'], 'smallerImageFile', 'sBilder')) {
+				$this->conf['smallerImageFile'] = 'uploads/tx_ghfontsize/'.$this->pi_getFFvalue($this->cObj->data['pi_flexform'], 'smallerImageFile', 'sBilder');
+			}
+
+			if($this->pi_getFFvalue($this->cObj->data['pi_flexform'], 'resetImageFile', 'sBilder')) {
+				$this->conf['resetImageFile'] = 'uploads/tx_ghfontsize/'.$this->pi_getFFvalue($this->cObj->data['pi_flexform'], 'resetImageFile', 'sBilder');
+			}
+
+			if($this->pi_getFFvalue($this->cObj->data['pi_flexform'], 'largerImageFile', 'sBilder')) {
+				$this->conf['largerImageFile'] = 'uploads/tx_ghfontsize/'.$this->pi_getFFvalue($this->cObj->data['pi_flexform'], 'largerImageFile', 'sBilder');
+			}
+
+		} else {
+			if($this->pi_getFFvalue($this->cObj->data['pi_flexform'], 'smallerText', 'sText')) {
+				$this->conf['smallerText'] = $this->pi_getFFvalue($this->cObj->data['pi_flexform'], 'smallerText', 'sText');
+			}
+
+			if($this->pi_getFFvalue($this->cObj->data['pi_flexform'], 'resetText', 'sText')) {
+				$this->conf['resetText'] = $this->pi_getFFvalue($this->cObj->data['pi_flexform'], 'resetText', 'sText');
+			}
+
+			if($this->pi_getFFvalue($this->cObj->data['pi_flexform'], 'largerText', 'sText')) {
+				$this->conf['largerText'] = $this->pi_getFFvalue($this->cObj->data['pi_flexform'], 'largerText', 'sText');
+			}
+		}
+
+		return true;
 	}
 
 	/**
@@ -93,12 +137,12 @@ class tx_ghfontsize_pi1 extends tslib_pibase {
 			$item = $this->conf[$element.'Text'];
 			if('image' == $this->conf['menuType']) {
 				$imgConf = array(
-					'file' => $this->conf['imageLocation'].$this->conf[$element.'ImageFile'],
-					'altText' => $element,
+					'file' => $this->conf[$element.'ImageFile'],
+					'altText' => $this->pi_getLL($element, $element),
 				);
 				$item = $this->cObj->IMAGE($imgConf);
 			}
-			$item = '<a href="'.$this->pi_getPageLink($GLOBALS['TSFE']->id, '', array($this->prefixId.'[action]' => $element)).'" class="tx-ghfontsize-'.$element.'">'.$item.'</a>';
+			$item = '<a href="'.$this->pi_getPageLink($GLOBALS['TSFE']->id, '', array($this->prefixId.'[action]' => $element)).'" class="tx-ghfontsize-'.$element.'" title="'.$this->pi_getLL($element, $element).'">'.$item.'</a>';
 			$item = $this->cObj->wrap($item, $this->conf['elementWrap']);
 
 			$content .= $item;
@@ -113,7 +157,7 @@ class tx_ghfontsize_pi1 extends tslib_pibase {
 	 *
 	 * @return	string		HTML
 	 */
-	function renderStyles() {
+	function renderStyle() {
 		$content = $this->conf['cssElement'].' { '.$this->conf['parameterName'].': '.$this->value.$this->conf['parameterUnit'].'; }';
 		$content = $this->cObj->wrap($content, $this->conf['styleWrap']);
 

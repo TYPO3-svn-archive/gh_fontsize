@@ -6,10 +6,9 @@ plugin.tx_ghfontsize_pi1 {
 	parameterUnit = %
 	cssElement = body
 	menuType = text
-	imageLocation = EXT:gh_fontsize/resources/images/
-	smallerImageFile = smaller.gif
-	resetImageFile = reset.gif
-	largerImageFile = larger.gif
+	smallerImageFile = EXT:gh_fontsize/resources/images/smaller.gif
+	resetImageFile = EXT:gh_fontsize/resources/images/reset.gif
+	largerImageFile = EXT:gh_fontsize/resources/images/larger.gif
 	smallerText = A
 	resetText = A
 	largerText = A
@@ -20,7 +19,7 @@ plugin.tx_ghfontsize_pi1 {
 	_CSS_DEFAULT_STYLE (
 		.tx-ghfontsize-pi1 {background-color: #eee; padding: 2px;}
 		.tx-ghfontsize-pi1 ul {margin: 0; padding: 0; list-style: none;}
-		.tx-ghfontsize-pi1 li {display: inline; float: left; padding: 2px; border: 1px solid black; margin: 2px;}
+		.tx-ghfontsize-pi1 li {display: inline; float: left; padding: 2px;}
 		.tx-ghfontsize-pi1 a {text-decoration: none; }
 		.tx-ghfontsize-smaller {font-size: .8em; line-height: 1.5em;}
 		.tx-ghfontsize-reset {font-size: 1em; line-height: 1.2em;}
