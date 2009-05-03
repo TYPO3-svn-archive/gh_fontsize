@@ -1,3 +1,10 @@
+2009-05-03 Gregor Hermens  <gregor@a-mazing.de>
+
+	* added flexform to fe plugin
+	* added l10n
+	* new icon
+	* changed status to beta
+
 2009-05-02 Gregor Hermens  <gregor@a-mazing.de>
 
 	* initial release 0.0.1 to TER
