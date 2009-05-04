@@ -1,3 +1,10 @@
+2009-05-04 Gregor Hermens  <gregor@a-mazing.de>
+
+	* added documentation
+	* changed type casting from integer to floating for baseValue and increment
+	* disabled curly brackets if cssElement is empty. You now can include the style as a parameter of a html tag.
+	* release of version 0.1.0
+
 2009-05-03 Gregor Hermens  <gregor@a-mazing.de>
 
 	* added flexform to fe plugin

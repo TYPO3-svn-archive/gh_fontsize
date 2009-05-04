@@ -158,7 +158,10 @@ class tx_ghfontsize_pi1 extends tslib_pibase {
 	 * @return	string		HTML
 	 */
 	function renderStyle() {
-		$content = $this->conf['cssElement'].' { '.$this->conf['parameterName'].': '.$this->value.$this->conf['parameterUnit'].'; }';
+		$content = $this->conf['parameterName'].': '.$this->value.$this->conf['parameterUnit'].';';
+		if(!empty($this->conf['cssElement'])) {
+			$content = $this->conf['cssElement'].' { '.$content.' }';
+		}
 		$content = $this->cObj->wrap($content, $this->conf['styleWrap']);
 
 		return $content;
@@ -172,7 +175,7 @@ class tx_ghfontsize_pi1 extends tslib_pibase {
 	 */
 	function calculateValue() {
 		if(!empty($this->conf['baseValue'])) {
-			$this->value = (int) $this->conf['baseValue'];
+			$this->value = (float) $this->conf['baseValue'];
 		}
 
 		$sessionValue = $GLOBALS['TSFE']->fe_user->getKey('ses', 'tx_ghfontsize_value');
@@ -186,13 +189,13 @@ class tx_ghfontsize_pi1 extends tslib_pibase {
 		if(!empty($this->piVars['action'])) {
 			switch($this->piVars['action']) {
 			case 'smaller':
-				$newValue -= (int) $this->conf['increment'];
+				$newValue -= (float) $this->conf['increment'];
 				break;
 			case 'reset':
-				$newValue = (int) $this->conf['baseValue'];
+				$newValue = (float) $this->conf['baseValue'];
 				break;
 			case 'larger':
-				$newValue += (int) $this->conf['increment'];
+				$newValue += (float) $this->conf['increment'];
 				break;
 			}
 		}
