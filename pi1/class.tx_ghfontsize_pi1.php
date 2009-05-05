@@ -66,6 +66,7 @@ class tx_ghfontsize_pi1 extends tslib_pibase {
 		$this->conf = $conf;
 		$this->pi_setPiVarDefaults();
 		$this->pi_loadLL();
+		$this->pi_USER_INT_obj=1;
 
 		switch($this->conf['show']) {
 		case 'menu':

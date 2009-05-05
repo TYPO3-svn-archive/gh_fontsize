@@ -1,0 +1,32 @@
+plugin.tx_ghfontsize_pi1 {
+	# cat=plugin.tx_ghfontsize_pi1/bsaics/a; type=string; label=baseValue: Numerical default value for the fontsize, either integer or floating point.
+	baseValue = 100
+	# cat=plugin.tx_ghfontsize_pi1/basics/b; type=string; label=increment: For each click on the menu the actual value is in- or decreased by this increment. May be integer or floating point.
+	increment = 10
+  # cat=plugin.tx_ghfontsize_pi1/basics/c; type=string; label=parameterName: Name of the css parameter
+	parameterName = font-size
+	# cat=plugin.tx_ghfontsize_pi1/basics/d; type=string; label=parameterUnit: Unit of the css parameter
+	parameterUnit = %
+	# cat=plugin.tx_ghfontsize_pi1/basics/e; type=string; label=cssElement: ESS element to be changed
+	cssElement = body
+	# cat=plugin.tx_ghfontsize_pi1/menu/f; type=options[text=text,image=image]; label=menuType: Type of the menu
+	menuType = text
+	# cat=plugin.tx_ghfontsize_pi1/menu/g; type=file[IMAGE_EXT]; label=smallerImageFile: Image to use for the decrease value link if menuType is set to image.
+	smallerImageFile = EXT:gh_fontsize/resources/images/smaller.gif
+	# cat=plugin.tx_ghfontsize_pi1/menu/h; type=file[IMAGE_EXT]; label=resetImageFile: Image to use for the reset value link if menuType is set to image.
+	resetImageFile = EXT:gh_fontsize/resources/images/reset.gif
+	# cat=plugin.tx_ghfontsize_pi1/menu/i; type=file[IMAGE_EXT]; label=largerImageFile: Image to use for the increase value link if menuType is set to image.
+	largerImageFile = EXT:gh_fontsize/resources/images/larger.gif
+	# cat=plugin.tx_ghfontsize_pi1/menu/k; type=string; label=smallerText: Text to use for the decrease value link if menuType is set to text.
+	smallerText = A
+	# cat=plugin.tx_ghfontsize_pi1/menu/l; type=string; label=resetText: Text to use for the reset value link if menuType is set to text.
+	resetText = A
+	# cat=plugin.tx_ghfontsize_pi1/menu/m; type=string; label=largerText: Text to use for the increase value link if menuType is set to text.
+	largerText = A
+	# cat=plugin.tx_ghfontsize_pi1/wraps/n; type=wrap; label=menuWrap_ Wraps the whole menu.
+	menuWrap = <ul>|</ul><br class="tx-ghfontsize-clear" />
+	# cat=plugin.tx_ghfontsize_pi1/wraps/o; type=wrap; label=elementWrap: Wraps each single menu item.
+	elementWrap = <li>|</li>
+	# cat=plugin.tx_ghfontsize_pi1/wraps/p; type=wrap; label=Wraps the css code.
+	styleWrap = <style type="text/css">|</style>
+}

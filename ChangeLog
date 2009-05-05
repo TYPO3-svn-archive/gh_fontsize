@@ -1,5 +1,11 @@
 2009-05-04 Gregor Hermens  <gregor@a-mazing.de>
 
+	* added configuration for the constant editor
+	* switched inclusion into page.headerData from copy to reference
+	* release of version 0.2.0
+
+2009-05-04 Gregor Hermens  <gregor@a-mazing.de>
+
 	* added documentation
 	* changed type casting from integer to floating for baseValue and increment
 	* disabled curly brackets if cssElement is empty. You now can include the style as a parameter of a html tag.

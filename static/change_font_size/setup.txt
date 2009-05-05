@@ -1,20 +1,20 @@
 plugin.tx_ghfontsize_pi1 {
 	show = menu
-	baseValue = 100
-	increment = 10
-	parameterName = font-size
-	parameterUnit = %
-	cssElement = body
-	menuType = text
-	smallerImageFile = EXT:gh_fontsize/resources/images/smaller.gif
-	resetImageFile = EXT:gh_fontsize/resources/images/reset.gif
-	largerImageFile = EXT:gh_fontsize/resources/images/larger.gif
-	smallerText = A
-	resetText = A
-	largerText = A
-	menuWrap = <ul>|</ul><br class="tx-ghfontsize-clear" />
-	elementWrap = <li>|</li>
-	styleWrap = <style type="text/css">|</style>
+	baseValue = {$plugin.tx_ghfontsize_pi1.baseValue}
+	increment = {$plugin.tx_ghfontsize_pi1.increment}
+	parameterName = {$plugin.tx_ghfontsize_pi1.parameterName}
+	parameterUnit = {$plugin.tx_ghfontsize_pi1.parameterUnit}
+	cssElement = {$plugin.tx_ghfontsize_pi1.cssElement}
+	menuType = {$plugin.tx_ghfontsize_pi1.menuType}
+	smallerImageFile = {$plugin.tx_ghfontsize_pi1.smallerImageFile}
+	resetImageFile = {$plugin.tx_ghfontsize_pi1.resetImageFile}
+	largerImageFile = {$plugin.tx_ghfontsize_pi1.largerImageFile}
+	smallerText = {$plugin.tx_ghfontsize_pi1.smallerText}
+	resetText = {$plugin.tx_ghfontsize_pi1.resetText}
+	largerText = {$plugin.tx_ghfontsize_pi1.largerText}
+	menuWrap = {$plugin.tx_ghfontsize_pi1.menuWrap}
+	elementWrap = {$plugin.tx_ghfontsize_pi1.elementWrap}
+	styleWrap = {$plugin.tx_ghfontsize_pi1.styleWrap}
 
 	_CSS_DEFAULT_STYLE (
 		.tx-ghfontsize-pi1 {background-color: #eee; padding: 2px;}
@@ -28,5 +28,5 @@ plugin.tx_ghfontsize_pi1 {
 	)
 }
 
-page.headerData.9999 < plugin.tx_ghfontsize_pi1
+page.headerData.9999 =< plugin.tx_ghfontsize_pi1
 page.headerData.9999.show = style
