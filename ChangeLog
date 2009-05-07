@@ -1,4 +1,8 @@
-2009-05-04 Gregor Hermens  <gregor@a-mazing.de>
+2009-05-07 Gregor Hermens  <gregor@a-mazing.de>
+
+	* eleminated some typos
+
+2009-05-05 Gregor Hermens  <gregor@a-mazing.de>
 
 	* added configuration for the constant editor
 	* switched inclusion into page.headerData from copy to reference

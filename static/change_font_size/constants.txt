@@ -7,7 +7,7 @@ plugin.tx_ghfontsize_pi1 {
 	parameterName = font-size
 	# cat=plugin.tx_ghfontsize_pi1/basics/d; type=string; label=parameterUnit: Unit of the css parameter
 	parameterUnit = %
-	# cat=plugin.tx_ghfontsize_pi1/basics/e; type=string; label=cssElement: ESS element to be changed
+	# cat=plugin.tx_ghfontsize_pi1/basics/e; type=string; label=cssElement: CSS element to be changed
 	cssElement = body
 	# cat=plugin.tx_ghfontsize_pi1/menu/f; type=options[text=text,image=image]; label=menuType: Type of the menu
 	menuType = text
