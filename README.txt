@@ -1,2 +1,7 @@
+This extension is hosted on TYPO3-Forge:
 
-Feel free to add some documentation or simply add a link to the online manual.
+http://forge.typo3.org/projects/show/extension-gh_fontsize
+
+To report bugs or feature requests, please go to
+
+http://forge.typo3.org/projects/extension-gh_fontsize/issues
