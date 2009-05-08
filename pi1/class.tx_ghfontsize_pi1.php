@@ -159,10 +159,10 @@ class tx_ghfontsize_pi1 extends tslib_pibase {
 			}
 
 			$getVars[$this->prefixId]['action'] = $element;
-
 			$urlParameters = $this->buildUrlParameters($getVars);
+			$url = str_replace('&', '&amp;', $this->pi_getPageLink($GLOBALS['TSFE']->id, '', $urlParameters));
 
-			$item = '<a href="'.$this->pi_getPageLink($GLOBALS['TSFE']->id, '', $urlParameters). '" class="tx-ghfontsize-'.$element.'" title="'.$this->pi_getLL($element, $element).'">'.$item.'</a>';
+			$item = '<a href="'.$url. '" class="tx-ghfontsize-'.$element.'" title="'.$this->pi_getLL($element, $element).'">'.$item.'</a>';
 			$item = $this->cObj->wrap($item, $this->conf['elementWrap']);
 
 			$content .= $item;

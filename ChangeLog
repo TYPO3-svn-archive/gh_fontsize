@@ -1,6 +1,12 @@
 2009-05-08 Gregor Hermens  <gregor@a-mazing.de>
 
+	* bugfix: unencoded ampersands in url
+	* bugfix-release of version 0.3.1
+
+2009-05-08 Gregor Hermens  <gregor@a-mazing.de>
+
 	* added option to preserve url parameters
+	* release of version 0.3.0
 
 2009-05-07 Gregor Hermens  <gregor@a-mazing.de>
 

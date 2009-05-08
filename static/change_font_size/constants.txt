@@ -3,7 +3,7 @@ plugin.tx_ghfontsize_pi1 {
 	baseValue = 100
 	# cat=plugin.tx_ghfontsize_pi1/basics/b; type=string; label=increment: For each click on the menu the actual value is in- or decreased by this increment. May be integer or floating point.
 	increment = 10
-  # cat=plugin.tx_ghfontsize_pi1/basics/c; type=string; label=parameterName: Name of the css parameter
+	# cat=plugin.tx_ghfontsize_pi1/basics/c; type=string; label=parameterName: Name of the css parameter
 	parameterName = font-size
 	# cat=plugin.tx_ghfontsize_pi1/basics/d; type=string; label=parameterUnit: Unit of the css parameter
 	parameterUnit = %
