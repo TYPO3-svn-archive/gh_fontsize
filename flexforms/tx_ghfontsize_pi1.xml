@@ -1,4 +1,3 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <T3DataStructure>
  <meta type="array">
   <langDisable>1</langDisable>
@@ -36,6 +35,31 @@
        <label>LLL:EXT:gh_fontsize/locallang_db.php:tt_content.pi_flexform.field_menuType</label>
       </TCEforms>
      </menuType>
+     <keepUrlParameters type="array">
+      <TCEforms type="array">
+       <config type="array">
+        <type_t3dev>select</type_t3dev>
+        <maxitems>1</maxitems>
+        <size></size>
+        <type>select</type>
+        <items type="array">
+         <numIndex index="0" type="array">
+          <numIndex index="0">LLL:EXT:gh_fontsize/locallang_db.php:tt_content.pi_flexform.field_keepUrlParameters.I.0</numIndex>
+          <numIndex index="1" type="integer">0</numIndex>
+         </numIndex>
+         <numIndex index="1" type="array">
+          <numIndex index="0">LLL:EXT:gh_fontsize/locallang_db.php:tt_content.pi_flexform.field_keepUrlParameters.I.1</numIndex>
+          <numIndex index="1" type="integer">1</numIndex>
+         </numIndex>
+         <numIndex index="2" type="array">
+          <numIndex index="0">LLL:EXT:gh_fontsize/locallang_db.php:tt_content.pi_flexform.field_keepUrlParameters.I.2</numIndex>
+          <numIndex index="1" type="integer">2</numIndex>
+         </numIndex>
+        </items>
+       </config>
+       <label>LLL:EXT:gh_fontsize/locallang_db.php:tt_content.pi_flexform.field_keepUrlParameters</label>
+      </TCEforms>
+     </keepUrlParameters>
     </el>
    </ROOT>
   </sDEF>
@@ -96,9 +120,9 @@
         <size>1</size>
         <max_size>100</max_size>
         <type>group</type>
-				<internal_type>file</internal_type>
-				<allowed>gif,png,jpg</allowed>
-				<uploadfolder>uploads/tx_ghfontsize/</uploadfolder>
+        <internal_type>file</internal_type>
+        <allowed>gif,png,jpg</allowed>
+        <uploadfolder>uploads/tx_ghfontsize/</uploadfolder>
        </config>
        <label>LLL:EXT:gh_fontsize/locallang_db.php:tt_content.pi_flexform.field_smallerImageFile</label>
       </TCEforms>
@@ -110,9 +134,9 @@
         <size>1</size>
         <max_size>100</max_size>
         <type>group</type>
-				<internal_type>file</internal_type>
-				<allowed>gif,png,jpg</allowed>
-				<uploadfolder>uploads/tx_ghfontsize/</uploadfolder>
+        <internal_type>file</internal_type>
+        <allowed>gif,png,jpg</allowed>
+        <uploadfolder>uploads/tx_ghfontsize/</uploadfolder>
        </config>
        <label>LLL:EXT:gh_fontsize/locallang_db.php:tt_content.pi_flexform.field_resetImageFile</label>
       </TCEforms>
@@ -124,9 +148,9 @@
         <size>1</size>
         <max_size>100</max_size>
         <type>group</type>
-				<internal_type>file</internal_type>
-				<allowed>gif,png,jpg</allowed>
-				<uploadfolder>uploads/tx_ghfontsize/</uploadfolder>
+        <internal_type>file</internal_type>
+        <allowed>gif,png,jpg</allowed>
+        <uploadfolder>uploads/tx_ghfontsize/</uploadfolder>
        </config>
        <label>LLL:EXT:gh_fontsize/locallang_db.php:tt_content.pi_flexform.field_largerImageFile</label>
       </TCEforms>

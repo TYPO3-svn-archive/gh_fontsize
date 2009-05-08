@@ -12,6 +12,10 @@
 			<label index="tt_content.pi_flexform.field_menuType.I.1">text</label>
 			<label index="tt_content.pi_flexform.field_menuType.I.2">image</label>
 			<label index="tt_content.pi_flexform.field_menuType">menu type</label>
+			<label index="tt_content.pi_flexform.field_keepUrlParameters">keep url parameters</label>
+			<label index="tt_content.pi_flexform.field_keepUrlParameters.I.0">default</label>
+			<label index="tt_content.pi_flexform.field_keepUrlParameters.I.1">yes</label>
+			<label index="tt_content.pi_flexform.field_keepUrlParameters.I.2">no</label>
 			<label index="tt_content.pi_flexform.sheet_Image">Image</label>
 			<label index="tt_content.pi_flexform.field_imageLocation">image path</label>
 			<label index="tt_content.pi_flexform.field_smallerImageFile">image file for smaller button</label>
@@ -30,6 +34,10 @@
 			<label index="tt_content.pi_flexform.field_menuType.I.1">Text-Menü</label>
 			<label index="tt_content.pi_flexform.field_menuType.I.2">Bild-Menü</label>
 			<label index="tt_content.pi_flexform.field_menuType">Art des Menüs</label>
+			<label index="tt_content.pi_flexform.field_keepUrlParameters">Url-Parameter beibehalten</label>
+			<label index="tt_content.pi_flexform.field_keepUrlParameters.I.0">Voreinstellung</label>
+			<label index="tt_content.pi_flexform.field_keepUrlParameters.I.1">ja</label>
+			<label index="tt_content.pi_flexform.field_keepUrlParameters.I.2">nein</label>
 			<label index="tt_content.pi_flexform.sheet_Image">Bild-Menü</label>
 			<label index="tt_content.pi_flexform.field_imageLocation">Pfad zu den Bildern</label>
 			<label index="tt_content.pi_flexform.field_smallerImageFile">Bild für Kleiner-Link</label>

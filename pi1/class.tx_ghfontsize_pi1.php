@@ -26,14 +26,15 @@
  *
  *
  *
- *   51: class tx_ghfontsize_pi1 extends tslib_pibase
- *   65:     function main($content, $conf)
- *   90:     function confFromFF()
- *  132:     function renderMenu()
- *  160:     function renderStyle()
- *  173:     function calculateValue()
+ *   52: class tx_ghfontsize_pi1 extends tslib_pibase
+ *   66:     function main($content, $conf)
+ *   92:     function confFromFF()
+ *  142:     function renderMenu()
+ *  180:     function renderStyle()
+ *  196:     function calculateValue()
+ *  236:     function buildUrlParameters($getVars)
  *
- * TOTAL FUNCTIONS: 5
+ * TOTAL FUNCTIONS: 6
  * (This index is automatically created/updated by the extension "extdeveval")
  *
  */
@@ -86,7 +87,7 @@ class tx_ghfontsize_pi1 extends tslib_pibase {
 	/**
 	 * Get configuration from FlexForm
 	 *
-	 * @return void
+	 * @return	void
 	 */
 	function confFromFF() {
 		$this->pi_initPIflexForm();
@@ -94,6 +95,14 @@ class tx_ghfontsize_pi1 extends tslib_pibase {
 		if( 2 == $this->pi_getFFvalue($this->cObj->data['pi_flexform'], 'menuType')) {
 			$this->conf['menuType'] = 'image';
 		}
+
+		if( 1 == $this->pi_getFFvalue($this->cObj->data['pi_flexform'], 'keepUrlParameters')) {
+			$this->conf['keepUrlParameters'] = true;
+		}
+		if( 2 == $this->pi_getFFvalue($this->cObj->data['pi_flexform'], 'keepUrlParameters')) {
+			$this->conf['keepUrlParameters'] = false;
+		}
+
 
 		if('image' == $this->conf['menuType']) {
 			if($this->pi_getFFvalue($this->cObj->data['pi_flexform'], 'smallerImageFile', 'sBilder')) {
@@ -134,6 +143,11 @@ class tx_ghfontsize_pi1 extends tslib_pibase {
 		$elements = array('smaller','reset','larger');
 		$content = '';
 
+		$getVars = array();
+		if(!empty($this->conf['keepUrlParameters'])) {
+			$getVars = t3lib_div::_GET();
+		}
+
 		foreach($elements as $element) {
 			$item = $this->conf[$element.'Text'];
 			if('image' == $this->conf['menuType']) {
@@ -143,7 +157,12 @@ class tx_ghfontsize_pi1 extends tslib_pibase {
 				);
 				$item = $this->cObj->IMAGE($imgConf);
 			}
-			$item = '<a href="'.$this->pi_getPageLink($GLOBALS['TSFE']->id, '', array($this->prefixId.'[action]' => $element)).'" class="tx-ghfontsize-'.$element.'" title="'.$this->pi_getLL($element, $element).'">'.$item.'</a>';
+
+			$getVars[$this->prefixId]['action'] = $element;
+
+			$urlParameters = $this->buildUrlParameters($getVars);
+
+			$item = '<a href="'.$this->pi_getPageLink($GLOBALS['TSFE']->id, '', $urlParameters). '" class="tx-ghfontsize-'.$element.'" title="'.$this->pi_getLL($element, $element).'">'.$item.'</a>';
 			$item = $this->cObj->wrap($item, $this->conf['elementWrap']);
 
 			$content .= $item;
@@ -206,6 +225,38 @@ class tx_ghfontsize_pi1 extends tslib_pibase {
 			$GLOBALS['TSFE']->fe_user->setKey('ses', 'tx_ghfontsize_value', $this->value);
 		}
 		return true;
+	}
+
+	/**
+	 * transforms multi-dimensional array into a one-dimensional array
+	 *
+	 * @param	array		$getVars: url parameters to be set
+	 * @return	array		url parameters to be set, prepared for pi_getPageLink()
+	 */
+	function buildUrlParameters($getVars) {
+		if(empty($getVars) or !is_array($getVars)) {
+			return array();
+		}
+
+		$return = array();
+
+		foreach($getVars as $key => $value) {
+			if(is_array($value)) {
+				foreach($value as $key2 => $value2) {
+					if(is_array($value2)) {
+						foreach($value2 as $key3 => $value3) {
+							$return[$key.'['.$key2.']['.$key3.']'] = $value3;
+						}
+					} else {
+						$return[$key.'['.$key2.']'] = $value2;
+					}
+				}
+			} else {
+				$return[$key] = $value;
+			}
+		}
+
+		return $return;
 	}
 }
 

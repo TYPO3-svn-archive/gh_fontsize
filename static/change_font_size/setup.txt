@@ -5,6 +5,7 @@ plugin.tx_ghfontsize_pi1 {
 	parameterName = {$plugin.tx_ghfontsize_pi1.parameterName}
 	parameterUnit = {$plugin.tx_ghfontsize_pi1.parameterUnit}
 	cssElement = {$plugin.tx_ghfontsize_pi1.cssElement}
+	keepUrlParameters = {$plugin.tx_ghfontsize_pi1.keepUrlParameters}
 	menuType = {$plugin.tx_ghfontsize_pi1.menuType}
 	smallerImageFile = {$plugin.tx_ghfontsize_pi1.smallerImageFile}
 	resetImageFile = {$plugin.tx_ghfontsize_pi1.resetImageFile}

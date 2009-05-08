@@ -7,8 +7,10 @@ plugin.tx_ghfontsize_pi1 {
 	parameterName = font-size
 	# cat=plugin.tx_ghfontsize_pi1/basics/d; type=string; label=parameterUnit: Unit of the css parameter
 	parameterUnit = %
-	# cat=plugin.tx_ghfontsize_pi1/basics/e; type=string; label=cssElement: CSS element to be changed
+	# cat=plugin.tx_ghfontsize_pi1/basics/e1; type=string; label=cssElement: CSS element to be changed
 	cssElement = body
+	# cat=plugin.tx_ghfontsize_pi1/basics/e2; type=boolean; label=keepUrlParameters: preserve parameters from original URL
+	keepUrlParameters = 1
 	# cat=plugin.tx_ghfontsize_pi1/menu/f; type=options[text=text,image=image]; label=menuType: Type of the menu
 	menuType = text
 	# cat=plugin.tx_ghfontsize_pi1/menu/g; type=file[IMAGE_EXT]; label=smallerImageFile: Image to use for the decrease value link if menuType is set to image.
