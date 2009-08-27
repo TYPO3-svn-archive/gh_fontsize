@@ -1,7 +1,10 @@
 plugin.tx_ghfontsize_pi1 {
 	show = menu
+	useAjax = {$plugin.tx_ghfontsize_pi1.useAjax}
 	baseValue = {$plugin.tx_ghfontsize_pi1.baseValue}
 	increment = {$plugin.tx_ghfontsize_pi1.increment}
+	maxValue = {$plugin.tx_ghfontsize_pi1.maxValue}
+	minValue = {$plugin.tx_ghfontsize_pi1.minValue}
 	parameterName = {$plugin.tx_ghfontsize_pi1.parameterName}
 	parameterUnit = {$plugin.tx_ghfontsize_pi1.parameterUnit}
 	cssElement = {$plugin.tx_ghfontsize_pi1.cssElement}

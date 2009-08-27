@@ -1,3 +1,14 @@
+2009-08-27 Gregor Hermens  <gregor@a-mazing.de>
+
+  * added javascript to resize the page without reloading and ajax functionality to update the user's session
+  * release of version 0.4.0
+  * changed description to match the new features
+  * release of version 0.4.1
+
+2009-08-26 Gregor Hermens  <gregor@a-mazing.de>
+
+  * added maxValue and minValue
+
 2009-05-08 Gregor Hermens  <gregor@a-mazing.de>
 
 	* bugfix: unencoded ampersands in url

@@ -26,15 +26,18 @@
  *
  *
  *
- *   52: class tx_ghfontsize_pi1 extends tslib_pibase
- *   66:     function main($content, $conf)
- *   92:     function confFromFF()
- *  142:     function renderMenu()
- *  180:     function renderStyle()
- *  196:     function calculateValue()
- *  236:     function buildUrlParameters($getVars)
+ *   55: class tx_ghfontsize_pi1 extends tslib_pibase
+ *   70:     function main($content, $conf)
+ *  103:     function confFromFF()
+ *  153:     function renderMenu()
+ *  191:     function renderStyle()
+ *  206:     function renderJS()
+ *  224:     function changeFontSize(whatToDo)
+ *  276:     function calculateValue()
+ *  331:     function buildUrlParameters($getVars)
+ *  362:     function checkAjaxRequirements()
  *
- * TOTAL FUNCTIONS: 6
+ * TOTAL FUNCTIONS: 9
  * (This index is automatically created/updated by the extension "extdeveval")
  *
  */
@@ -55,6 +58,7 @@ class tx_ghfontsize_pi1 extends tslib_pibase {
 	var $extKey        = 'gh_fontsize';	// The extension key.
 	var $pi_checkCHash = true;
 	var $value         = 100;
+	var $useAjax       = 0;
 
 	/**
 	 * The main method of the PlugIn
@@ -69,6 +73,10 @@ class tx_ghfontsize_pi1 extends tslib_pibase {
 		$this->pi_loadLL();
 		$this->pi_USER_INT_obj=1;
 
+		if($this->conf['useAjax']) {
+			$this->checkAjaxRequirements();
+		}
+
 		switch($this->conf['show']) {
 		case 'menu':
 			$this->confFromFF();
@@ -78,6 +86,9 @@ class tx_ghfontsize_pi1 extends tslib_pibase {
 		case 'style':
 			$this->calculateValue();
 			$content = $this->renderStyle();
+			if($this->useAjax) {
+				$content .= $this->renderJS();
+			}
 			return $content;
 			break;
 		}
@@ -162,7 +173,7 @@ class tx_ghfontsize_pi1 extends tslib_pibase {
 			$urlParameters = $this->buildUrlParameters($getVars);
 			$url = str_replace('&', '&amp;', $this->pi_getPageLink($GLOBALS['TSFE']->id, '', $urlParameters));
 
-			$item = '<a href="'.$url. '" class="tx-ghfontsize-'.$element.'" title="'.$this->pi_getLL($element, $element).'">'.$item.'</a>';
+			$item = '<a href="'.$url. '" '. ($this->useAjax ? 'onclick="changeFontSize(\''.$element.'\'); return false;" ' : '').'class="tx-ghfontsize-'.$element.'" title="'.$this->pi_getLL($element, $element).'">'.$item.'</a>';
 			$item = $this->cObj->wrap($item, $this->conf['elementWrap']);
 
 			$content .= $item;
@@ -173,7 +184,7 @@ class tx_ghfontsize_pi1 extends tslib_pibase {
 	}
 
 	/**
-	 * Generate the styles to be included in the html header
+	 * Generate the styles to be included into the html header
 	 *
 	 * @return	string		HTML
 	 */
@@ -184,6 +195,75 @@ class tx_ghfontsize_pi1 extends tslib_pibase {
 		}
 		$content = $this->cObj->wrap($content, $this->conf['styleWrap']);
 
+		return $content;
+	}
+
+	/**
+	 * Generate the javasscript to be included into the html header
+	 *
+	 * @return	string		HTML
+	 */
+	function renderJS() {
+		$baseValue = (float) $this->conf['baseValue'];
+		$minValue = (float) $this->conf['minValue'];
+		if($minValue > $baseValue) {
+			$minValue = $baseValue;
+		}
+		$maxValue = (float) $this->conf['maxValue'];
+		if($maxValue < $baseValue) {
+			$maxValue = $baseValue;
+		}
+
+		$content = '
+	<script type="text/javascript" src="typo3/contrib/prototype/prototype.js"></script>
+	<script type="text/javascript">
+	/*<![CDATA[*/
+
+		var actValue = '.$this->value.';
+
+		function changeFontSize(whatToDo) {
+			var newValue;
+			var baseValue = '.$baseValue.';
+			var minValue = '.$minValue.';
+			var maxValue = '.$maxValue.';
+			var increment = '. (float) $this->conf['increment'].';
+			var parameterName = "'.$this->conf['parameterName'].'";
+			var parameterUnit = "'.$this->conf['parameterUnit'].'";
+			var cssElement = "'.$this->conf['cssElement'].'";
+
+			switch (whatToDo) {
+				case "smaller":
+					newValue = actValue - increment;
+					if(newValue < minValue) {
+						newValue = minValue;
+					}
+					break;
+				case "reset":
+					newValue = baseValue;
+					break;
+				case "larger":
+					newValue = actValue + increment;
+					if(newValue > maxValue) {
+						newValue = maxValue;
+					}
+					break;
+			}
+
+			document.getElementsByTagName("body")[0].style.fontSize = newValue + parameterUnit;
+
+			if(actValue != newValue) {
+				new Ajax.Request ( "index.php", {
+					method: "get",
+					parameters: "eID=gh_fontsize&tx_ghfontsize_newvalue=" + newValue,
+				});
+
+				actValue = newValue;
+			}
+		}
+
+	/*]]>*/
+	</script>
+';
 		return $content;
 	}
 
@@ -205,17 +285,32 @@ class tx_ghfontsize_pi1 extends tslib_pibase {
 		}
 
 		$newValue = $this->value;
+		$baseValue = (float) $this->conf['baseValue'];
+		$minValue = (float) $this->conf['minValue'];
+		if($minValue > $baseValue) {
+			$minValue = $baseValue;
+		}
+		$maxValue = (float) $this->conf['maxValue'];
+		if($maxValue < $baseValue) {
+			$maxValue = $baseValue;
+		}
 
 		if(!empty($this->piVars['action'])) {
 			switch($this->piVars['action']) {
 			case 'smaller':
 				$newValue -= (float) $this->conf['increment'];
+				if($newValue < $minValue) {
+					$newValue = $minValue;
+				}
 				break;
 			case 'reset':
-				$newValue = (float) $this->conf['baseValue'];
+				$newValue = (float) $baseValue;
 				break;
 			case 'larger':
 				$newValue += (float) $this->conf['increment'];
+				if($newValue > $maxValue) {
+					$newValue = $maxValue;
+				}
 				break;
 			}
 		}
@@ -257,6 +352,19 @@ class tx_ghfontsize_pi1 extends tslib_pibase {
 		}
 
 		return $return;
+	}
+
+	/**
+	 * check requirements for the use of javascript / ajax
+	 *
+	 * @return	void
+	 */
+	function checkAjaxRequirements() {
+		if($this->conf['useAjax'] && $this->conf['cssElement'] == 'body' && $this->conf['parameterName'] == 'font-size') {
+			$this->useAjax = 1;
+		} else {
+			$this->useAjax = 0;
+		}
 	}
 }
 
