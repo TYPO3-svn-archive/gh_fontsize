@@ -33,9 +33,9 @@
  *  191:     function renderStyle()
  *  206:     function renderJS()
  *  224:     function changeFontSize(whatToDo)
- *  276:     function calculateValue()
- *  331:     function buildUrlParameters($getVars)
- *  362:     function checkAjaxRequirements()
+ *  277:     function calculateValue()
+ *  333:     function buildUrlParameters($getVars)
+ *  364:     function checkAjaxRequirements()
  *
  * TOTAL FUNCTIONS: 9
  * (This index is automatically created/updated by the extension "extdeveval")
@@ -234,19 +234,20 @@ class tx_ghfontsize_pi1 extends tslib_pibase {
 			switch (whatToDo) {
 				case "smaller":
 					newValue = actValue - increment;
-					if(newValue < minValue) {
-						newValue = minValue;
-					}
 					break;
 				case "reset":
 					newValue = baseValue;
 					break;
 				case "larger":
 					newValue = actValue + increment;
-					if(newValue > maxValue) {
-						newValue = maxValue;
-					}
 					break;
+			}
+
+			if(newValue < minValue) {
+				newValue = minValue;
+			}
+			if(newValue > maxValue) {
+				newValue = maxValue;
 			}
 
 			document.getElementsByTagName("body")[0].style.fontSize = newValue + parameterUnit;
@@ -299,20 +300,21 @@ class tx_ghfontsize_pi1 extends tslib_pibase {
 			switch($this->piVars['action']) {
 			case 'smaller':
 				$newValue -= (float) $this->conf['increment'];
-				if($newValue < $minValue) {
-					$newValue = $minValue;
-				}
 				break;
 			case 'reset':
 				$newValue = (float) $baseValue;
 				break;
 			case 'larger':
 				$newValue += (float) $this->conf['increment'];
-				if($newValue > $maxValue) {
-					$newValue = $maxValue;
-				}
 				break;
 			}
+		}
+
+		if($newValue < $minValue) {
+			$newValue = $minValue;
+		}
+		if($newValue > $maxValue) {
+			$newValue = $maxValue;
 		}
 
 		if($this->value != $newValue and $newValue > 0) {

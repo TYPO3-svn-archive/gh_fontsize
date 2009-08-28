@@ -32,7 +32,7 @@ $sessionValue = $fe_user->getKey('ses', 'tx_ghfontsize_value');
 
 $newValue = (float) t3lib_div::_GET('tx_ghfontsize_newvalue');
 
-if($newValue != $sessionValue) {
+if($newValue > 0 && $newValue != $sessionValue) {
 	$fe_user->setKey('ses', 'tx_ghfontsize_value', $newValue);
 	$fe_user->storeSessionData();
 }
