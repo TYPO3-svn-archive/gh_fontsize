@@ -3,7 +3,7 @@
 ########################################################################
 # Extension Manager/Repository config file for ext: "gh_fontsize"
 #
-# Auto generated 28-08-2009 12:34
+# Auto generated 31-08-2009 20:36
 #
 # Manual updates:
 # Only the data in the array - anything else is removed by next write.
@@ -29,7 +29,7 @@ $EM_CONF[$_EXTKEY] = array(
 	'clearCacheOnLoad' => 1,
 	'lockType' => '',
 	'author_company' => '',
-	'version' => '0.4.2',
+	'version' => '0.4.3',
 	'constraints' => array(
 		'depends' => array(
 		),
@@ -38,7 +38,7 @@ $EM_CONF[$_EXTKEY] = array(
 		'suggests' => array(
 		),
 	),
-	'_md5_values_when_last_written' => 'a:19:{s:9:"ChangeLog";s:4:"c836";s:10:"README.txt";s:4:"7028";s:12:"ext_icon.gif";s:4:"633d";s:17:"ext_localconf.php";s:4:"1bfb";s:14:"ext_tables.php";s:4:"76c7";s:16:"locallang_db.xml";s:4:"77f5";s:12:"pi1/ajax.php";s:4:"960f";s:31:"pi1/class.tx_ghfontsize_pi1.php";s:4:"9b0c";s:17:"pi1/locallang.xml";s:4:"88d5";s:31:"flexforms/tx_ghfontsize_pi1.xml";s:4:"e54c";s:27:"resources/images/button.xcf";s:4:"5399";s:27:"resources/images/larger.gif";s:4:"5d13";s:26:"resources/images/reset.gif";s:4:"b8f0";s:28:"resources/images/smaller.gif";s:4:"f352";s:37:"static/change_font_size/constants.txt";s:4:"fa87";s:33:"static/change_font_size/setup.txt";s:4:"392d";s:14:"doc/manual.sxw";s:4:"7220";s:19:"doc/wizard_form.dat";s:4:"d30b";s:20:"doc/wizard_form.html";s:4:"a7c3";}',
+	'_md5_values_when_last_written' => 'a:19:{s:9:"ChangeLog";s:4:"5708";s:10:"README.txt";s:4:"7028";s:12:"ext_icon.gif";s:4:"633d";s:17:"ext_localconf.php";s:4:"1bfb";s:14:"ext_tables.php";s:4:"76c7";s:16:"locallang_db.xml";s:4:"28bc";s:12:"pi1/ajax.php";s:4:"960f";s:31:"pi1/class.tx_ghfontsize_pi1.php";s:4:"f6b9";s:17:"pi1/locallang.xml";s:4:"88d5";s:31:"flexforms/tx_ghfontsize_pi1.xml";s:4:"d0f0";s:27:"resources/images/button.xcf";s:4:"5399";s:27:"resources/images/larger.gif";s:4:"5d13";s:26:"resources/images/reset.gif";s:4:"b8f0";s:28:"resources/images/smaller.gif";s:4:"f352";s:37:"static/change_font_size/constants.txt";s:4:"2719";s:33:"static/change_font_size/setup.txt";s:4:"4187";s:14:"doc/manual.sxw";s:4:"f0e6";s:19:"doc/wizard_form.dat";s:4:"d30b";s:20:"doc/wizard_form.html";s:4:"a7c3";}',
 	'suggests' => array(
 	),
 );

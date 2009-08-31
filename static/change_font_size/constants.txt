@@ -17,8 +17,10 @@ plugin.tx_ghfontsize_pi1 {
 	cssElement = body
 	# cat=plugin.tx_ghfontsize_pi1/basics/e2; type=boolean; label=keepUrlParameters: preserve parameters from original URL
 	keepUrlParameters = 1
-	# cat=plugin.tx_ghfontsize_pi1/menu/f; type=options[text=text,image=image]; label=menuType: Type of the menu
+	# cat=plugin.tx_ghfontsize_pi1/menu/f1; type=options[text=text,image=image]; label=menuType: Type of the menu
 	menuType = text
+	# cat=plugin.tx_ghfontsize_pi1/menu/f2; type=string; label=menuElements: Comma separated list of elements to show in the menu. Allowed elements: smaller, reset, larger
+	menuElements = smaller,reset,larger
 	# cat=plugin.tx_ghfontsize_pi1/menu/g; type=file[IMAGE_EXT]; label=smallerImageFile: Image to use for the decrease value link if menuType is set to image.
 	smallerImageFile = EXT:gh_fontsize/resources/images/smaller.gif
 	# cat=plugin.tx_ghfontsize_pi1/menu/h; type=file[IMAGE_EXT]; label=resetImageFile: Image to use for the reset value link if menuType is set to image.

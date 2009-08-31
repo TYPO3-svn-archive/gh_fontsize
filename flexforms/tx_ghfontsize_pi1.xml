@@ -35,6 +35,39 @@
        <label>LLL:EXT:gh_fontsize/locallang_db.php:tt_content.pi_flexform.field_menuType</label>
       </TCEforms>
      </menuType>
+		 <menuElements>
+			<TCEforms type="array">
+			 <config type="array">
+        <type_t3dev>select</type_t3dev>
+				<maxitems>1</maxitems>
+        <size></size>
+        <type>select</type>
+				<items type="array">
+				 <numIndex index="0" type="array">
+					<numIndex index="0">LLL:EXT:gh_fontsize/locallang_db.php:tt_content.pi_flexform.field_menuElements.I.0</numIndex>
+          <numIndex index="1" type="integer">0</numIndex>
+				 </numIndex>
+				 <numIndex index="1" type="array">
+					<numIndex index="0">LLL:EXT:gh_fontsize/locallang_db.php:tt_content.pi_flexform.field_menuElements.I.1</numIndex>
+          <numIndex index="1" type="integer">1</numIndex>
+				 </numIndex>
+				 <numIndex index="2" type="array">
+					<numIndex index="0">LLL:EXT:gh_fontsize/locallang_db.php:tt_content.pi_flexform.field_menuElements.I.2</numIndex>
+          <numIndex index="1" type="integer">2</numIndex>
+				 </numIndex>
+				 <numIndex index="3" type="array">
+					<numIndex index="0">LLL:EXT:gh_fontsize/locallang_db.php:tt_content.pi_flexform.field_menuElements.I.3</numIndex>
+          <numIndex index="1" type="integer">3</numIndex>
+				 </numIndex>
+				 <numIndex index="4" type="array">
+					<numIndex index="0">LLL:EXT:gh_fontsize/locallang_db.php:tt_content.pi_flexform.field_menuElements.I.4</numIndex>
+          <numIndex index="1" type="integer">4</numIndex>
+				 </numIndex>
+				</items>
+       </config>
+       <label>LLL:EXT:gh_fontsize/locallang_db.php:tt_content.pi_flexform.field_menuElements</label>
+      </TCEforms>
+		 </menuElements>
      <keepUrlParameters type="array">
       <TCEforms type="array">
        <config type="array">

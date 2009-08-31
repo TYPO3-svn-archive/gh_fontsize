@@ -29,13 +29,13 @@
  *   55: class tx_ghfontsize_pi1 extends tslib_pibase
  *   70:     function main($content, $conf)
  *  103:     function confFromFF()
- *  153:     function renderMenu()
- *  191:     function renderStyle()
- *  206:     function renderJS()
- *  224:     function changeFontSize(whatToDo)
- *  277:     function calculateValue()
- *  333:     function buildUrlParameters($getVars)
- *  364:     function checkAjaxRequirements()
+ *  165:     function renderMenu()
+ *  209:     function renderStyle()
+ *  224:     function renderJS()
+ *  242:     function changeFontSize(whatToDo)
+ *  295:     function calculateValue()
+ *  351:     function buildUrlParameters($getVars)
+ *  382:     function checkAjaxRequirements()
  *
  * TOTAL FUNCTIONS: 9
  * (This index is automatically created/updated by the extension "extdeveval")
@@ -114,6 +114,18 @@ class tx_ghfontsize_pi1 extends tslib_pibase {
 			$this->conf['keepUrlParameters'] = false;
 		}
 
+		if( 1 == $this->pi_getFFvalue($this->cObj->data['pi_flexform'], 'menuElements')) {
+			$this->conf['menuElements'] = 'smaller,reset,larger';
+		}
+		if( 2 == $this->pi_getFFvalue($this->cObj->data['pi_flexform'], 'menuElements')) {
+			$this->conf['menuElements'] = 'larger,reset,smaller';
+		}
+		if( 3 == $this->pi_getFFvalue($this->cObj->data['pi_flexform'], 'menuElements')) {
+			$this->conf['menuElements'] = 'smaller,larger';
+		}
+		if( 4 == $this->pi_getFFvalue($this->cObj->data['pi_flexform'], 'menuElements')) {
+			$this->conf['menuElements'] = 'larger,smaller';
+		}
 
 		if('image' == $this->conf['menuType']) {
 			if($this->pi_getFFvalue($this->cObj->data['pi_flexform'], 'smallerImageFile', 'sBilder')) {
@@ -151,7 +163,10 @@ class tx_ghfontsize_pi1 extends tslib_pibase {
 	 * @return	string		HTML
 	 */
 	function renderMenu() {
-		$elements = array('smaller','reset','larger');
+		$this->conf['menuElements'] = t3lib_div::trimExplode(',', $this->conf['menuElements'], 1);
+		if(!count($this->conf['menuElements'])) {
+			$this->conf['menuElements'] = array('smaller', 'reset', 'larger');
+		}
 		$content = '';
 
 		$getVars = array();
@@ -159,7 +174,10 @@ class tx_ghfontsize_pi1 extends tslib_pibase {
 			$getVars = t3lib_div::_GET();
 		}
 
-		foreach($elements as $element) {
+		foreach($this->conf['menuElements'] as $element) {
+			if(!in_array($element, array('smaller', 'reset', 'larger'))) {
+				continue;
+			}
 			$item = $this->conf[$element.'Text'];
 			if('image' == $this->conf['menuType']) {
 				$imgConf = array(

@@ -12,6 +12,12 @@
 			<label index="tt_content.pi_flexform.field_menuType.I.1">text</label>
 			<label index="tt_content.pi_flexform.field_menuType.I.2">image</label>
 			<label index="tt_content.pi_flexform.field_menuType">menu type</label>
+			<label index="tt_content.pi_flexform.field_menuElements">menu elements</label>
+			<label index="tt_content.pi_flexform.field_menuElements.I.0">default</label>
+			<label index="tt_content.pi_flexform.field_menuElements.I.1">smaller, reset, larger</label>
+			<label index="tt_content.pi_flexform.field_menuElements.I.2">larger, reset, smaller</label>
+			<label index="tt_content.pi_flexform.field_menuElements.I.3">smaller, larger</label>
+			<label index="tt_content.pi_flexform.field_menuElements.I.4">larger, smaller</label>
 			<label index="tt_content.pi_flexform.field_keepUrlParameters">keep url parameters</label>
 			<label index="tt_content.pi_flexform.field_keepUrlParameters.I.0">default</label>
 			<label index="tt_content.pi_flexform.field_keepUrlParameters.I.1">yes</label>
@@ -34,6 +40,12 @@
 			<label index="tt_content.pi_flexform.field_menuType.I.1">Text-Menü</label>
 			<label index="tt_content.pi_flexform.field_menuType.I.2">Bild-Menü</label>
 			<label index="tt_content.pi_flexform.field_menuType">Art des Menüs</label>
+			<label index="tt_content.pi_flexform.field_menuElements">Menüpunkte</label>
+			<label index="tt_content.pi_flexform.field_menuElements.I.0">Voreinstellung</label>
+			<label index="tt_content.pi_flexform.field_menuElements.I.1">kleiner, zurücksetzen, größer</label>
+			<label index="tt_content.pi_flexform.field_menuElements.I.2">größer, zurücksetzen, kleiner</label>
+			<label index="tt_content.pi_flexform.field_menuElements.I.3">kleiner, größer</label>
+			<label index="tt_content.pi_flexform.field_menuElements.I.4">größer, kleiner</label>
 			<label index="tt_content.pi_flexform.field_keepUrlParameters">Url-Parameter beibehalten</label>
 			<label index="tt_content.pi_flexform.field_keepUrlParameters.I.0">Voreinstellung</label>
 			<label index="tt_content.pi_flexform.field_keepUrlParameters.I.1">ja</label>
