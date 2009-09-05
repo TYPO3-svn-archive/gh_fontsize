@@ -245,9 +245,7 @@ class tx_ghfontsize_pi1 extends tslib_pibase {
 			var minValue = '.$minValue.';
 			var maxValue = '.$maxValue.';
 			var increment = '. (float) $this->conf['increment'].';
-			var parameterName = "'.$this->conf['parameterName'].'";
 			var parameterUnit = "'.$this->conf['parameterUnit'].'";
-			var cssElement = "'.$this->conf['cssElement'].'";
 
 			switch (whatToDo) {
 				case "smaller":
@@ -266,10 +264,20 @@ class tx_ghfontsize_pi1 extends tslib_pibase {
 			}
 			if(newValue > maxValue) {
 				newValue = maxValue;
-			}
+			}';
+
+		if('body' == $this->conf['cssElement']) {
+			$content .= '
 
 			document.getElementsByTagName("body")[0].style.fontSize = newValue + parameterUnit;
+			';
+		} else {
+			$content .= '
 
+			document.getElementById("'.substr($this->conf['cssElement'], 1).'").style.fontSize = newValue + parameterUnit;
+			';
+		}
+		$content .= '
 			if(actValue != newValue) {
 				new Ajax.Request ( "index.php", {
 					method: "get",
@@ -380,7 +388,14 @@ class tx_ghfontsize_pi1 extends tslib_pibase {
 	 * @return	void
 	 */
 	function checkAjaxRequirements() {
-		if($this->conf['useAjax'] && $this->conf['cssElement'] == 'body' && $this->conf['parameterName'] == 'font-size') {
+		if(
+				$this->conf['useAjax'] && (
+					$this->conf['cssElement'] == 'body' || (
+						substr($this->conf['cssElement'], 0, 1) == '#' &&
+						!preg_match('|\s+|', $this->conf['cssElement'])
+					)
+				) &&
+				$this->conf['parameterName'] == 'font-size') {
 			$this->useAjax = 1;
 		} else {
 			$this->useAjax = 0;
