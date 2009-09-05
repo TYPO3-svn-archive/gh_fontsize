@@ -1,23 +1,28 @@
+2009-09-05 Gregor Hermens <gregor@a-mazing.de>
+
+	* added feature: Ajax now works with CSS IDs
+	* added feature: Ajax now works with most numerical CSS parameters
+
 2009-08-31 Gregor Hermens <gregor@a-mazing.de>
 
-  * added feature #4408: Make display links (smaller, reset, larger) configurable
-  * release of version 0.4.3
+	* added feature #4408: Make display links (smaller, reset, larger) configurable
+	* release of version 0.4.3
 
 2009-08-28 Gregor Hermens <gregor@a-mazing.de>
 
-  * always check for max / min values
-  * release of version 0.4.2
+	* always check for max / min values
+	* release of version 0.4.2
 
 2009-08-27 Gregor Hermens <gregor@a-mazing.de>
 
-  * added javascript to resize the page without reloading and ajax functionality to update the user's session
-  * release of version 0.4.0
-  * changed description to match the new features
-  * release of version 0.4.1
+	* added javascript to resize the page without reloading and ajax functionality to update the user's session
+	* release of version 0.4.0
+	* changed description to match the new features
+	* release of version 0.4.1
 
 2009-08-26 Gregor Hermens <gregor@a-mazing.de>
 
-  * added maxValue and minValue
+	* added maxValue and minValue
 
 2009-05-08 Gregor Hermens <gregor@a-mazing.de>
 

@@ -59,6 +59,7 @@ class tx_ghfontsize_pi1 extends tslib_pibase {
 	var $pi_checkCHash = true;
 	var $value         = 100;
 	var $useAjax       = 0;
+	var $JSparameterName = 'fontSize';
 
 	/**
 	 * The main method of the PlugIn
@@ -67,7 +68,7 @@ class tx_ghfontsize_pi1 extends tslib_pibase {
 	 * @param	array		$conf: The PlugIn configuration
 	 * @return	string		The content that is displayed on the website
 	 */
-	function main($content, $conf) {
+	public function main($content, $conf) {
 		$this->conf = $conf;
 		$this->pi_setPiVarDefaults();
 		$this->pi_loadLL();
@@ -100,7 +101,7 @@ class tx_ghfontsize_pi1 extends tslib_pibase {
 	 *
 	 * @return	void
 	 */
-	function confFromFF() {
+	protected function confFromFF() {
 		$this->pi_initPIflexForm();
 
 		if( 2 == $this->pi_getFFvalue($this->cObj->data['pi_flexform'], 'menuType')) {
@@ -162,7 +163,7 @@ class tx_ghfontsize_pi1 extends tslib_pibase {
 	 *
 	 * @return	string		HTML
 	 */
-	function renderMenu() {
+	protected function renderMenu() {
 		$this->conf['menuElements'] = t3lib_div::trimExplode(',', $this->conf['menuElements'], 1);
 		if(!count($this->conf['menuElements'])) {
 			$this->conf['menuElements'] = array('smaller', 'reset', 'larger');
@@ -206,7 +207,7 @@ class tx_ghfontsize_pi1 extends tslib_pibase {
 	 *
 	 * @return	string		HTML
 	 */
-	function renderStyle() {
+	protected function renderStyle() {
 		$content = $this->conf['parameterName'].': '.$this->value.$this->conf['parameterUnit'].';';
 		if(!empty($this->conf['cssElement'])) {
 			$content = $this->conf['cssElement'].' { '.$content.' }';
@@ -221,7 +222,7 @@ class tx_ghfontsize_pi1 extends tslib_pibase {
 	 *
 	 * @return	string		HTML
 	 */
-	function renderJS() {
+	protected function renderJS() {
 		$baseValue = (float) $this->conf['baseValue'];
 		$minValue = (float) $this->conf['minValue'];
 		if($minValue > $baseValue) {
@@ -269,12 +270,12 @@ class tx_ghfontsize_pi1 extends tslib_pibase {
 		if('body' == $this->conf['cssElement']) {
 			$content .= '
 
-			document.getElementsByTagName("body")[0].style.fontSize = newValue + parameterUnit;
+			document.getElementsByTagName("body")[0].style.'.$this->JSparameterName.' = newValue + parameterUnit;
 			';
 		} else {
 			$content .= '
 
-			document.getElementById("'.substr($this->conf['cssElement'], 1).'").style.fontSize = newValue + parameterUnit;
+			document.getElementById("'.substr($this->conf['cssElement'], 1).'").style.'.$this->JSparameterName.' = newValue + parameterUnit;
 			';
 		}
 		$content .= '
@@ -300,7 +301,7 @@ class tx_ghfontsize_pi1 extends tslib_pibase {
 	 *
 	 * @return	void
 	 */
-	function calculateValue() {
+	protected function calculateValue() {
 		if(!empty($this->conf['baseValue'])) {
 			$this->value = (float) $this->conf['baseValue'];
 		}
@@ -356,7 +357,7 @@ class tx_ghfontsize_pi1 extends tslib_pibase {
 	 * @param	array		$getVars: url parameters to be set
 	 * @return	array		url parameters to be set, prepared for pi_getPageLink()
 	 */
-	function buildUrlParameters($getVars) {
+	protected function buildUrlParameters($getVars) {
 		if(empty($getVars) or !is_array($getVars)) {
 			return array();
 		}
@@ -387,7 +388,7 @@ class tx_ghfontsize_pi1 extends tslib_pibase {
 	 *
 	 * @return	void
 	 */
-	function checkAjaxRequirements() {
+	protected function checkAjaxRequirements() {
 		if(
 				$this->conf['useAjax'] && (
 					$this->conf['cssElement'] == 'body' || (
@@ -395,11 +396,48 @@ class tx_ghfontsize_pi1 extends tslib_pibase {
 						!preg_match('|\s+|', $this->conf['cssElement'])
 					)
 				) &&
-				$this->conf['parameterName'] == 'font-size') {
+				$this->parameterName2JS($this->conf['parameterName'])
+		) {
 			$this->useAjax = 1;
 		} else {
 			$this->useAjax = 0;
 		}
+	}
+
+	/**
+	 * translate CSS parameter to JavaScript Parameter
+	 *
+	 * @param string  name of the CSS parameter
+	 * @return boolean  CSS parameter adequate for AJAX functionality
+	 */
+	protected function parameterName2JS($parameterName) {
+
+		if(empty($parameterName)) {
+			return false;
+		}
+
+		$JSparameters = array(
+			'font-size' => 'fontSize',
+			'height' => 'height',
+			'width' => 'width',
+			'left' => 'left',
+			'right' => 'right',
+			'top' => 'top',
+			'bottom' => 'bottom',
+			'margin' => 'margin',
+			'border-width' => 'borderWidth',
+			'padding' => 'padding',
+			'letter-spacing' => 'letterSpacing',
+			'line-height' => 'lineHeight',
+			'word-spacing' => 'wordSpacing'
+		);
+
+		if(!array_key_exists($parameterName, $JSparameters)) {
+			return false;
+		}
+
+		$this->JSparameterName = $JSparameters[$parameterName];
+		return true;
 	}
 }
 
