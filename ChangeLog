@@ -1,3 +1,8 @@
+2009-09-06 Gregor Hermens <gregor@a-mazing.de>
+
+	* added new features to documentation
+	* release of version 0.4.4
+
 2009-09-05 Gregor Hermens <gregor@a-mazing.de>
 
 	* added feature: Ajax now works with CSS IDs

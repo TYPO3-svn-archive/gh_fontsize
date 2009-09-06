@@ -26,18 +26,19 @@
  *
  *
  *
- *   55: class tx_ghfontsize_pi1 extends tslib_pibase
- *   70:     function main($content, $conf)
- *  103:     function confFromFF()
- *  165:     function renderMenu()
- *  209:     function renderStyle()
- *  224:     function renderJS()
- *  242:     function changeFontSize(whatToDo)
- *  295:     function calculateValue()
- *  351:     function buildUrlParameters($getVars)
- *  382:     function checkAjaxRequirements()
+ *   56: class tx_ghfontsize_pi1 extends tslib_pibase
+ *   72:     public function main($content, $conf)
+ *  105:     protected function confFromFF()
+ *  167:     protected function renderMenu()
+ *  211:     protected function renderStyle()
+ *  226:     protected function renderJS()
+ *  244:     function changeFontSize(whatToDo)
+ *  305:     protected function calculateValue()
+ *  361:     protected function buildUrlParameters($getVars)
+ *  392:     protected function checkAjaxRequirements()
+ *  414:     protected function parameterName2JS($parameterName)
  *
- * TOTAL FUNCTIONS: 9
+ * TOTAL FUNCTIONS: 10
  * (This index is automatically created/updated by the extension "extdeveval")
  *
  */
@@ -405,10 +406,10 @@ class tx_ghfontsize_pi1 extends tslib_pibase {
 	}
 
 	/**
-	 * translate CSS parameter to JavaScript Parameter
+	 * translate CSS parameter to JavaScript parameter
 	 *
-	 * @param string  name of the CSS parameter
-	 * @return boolean  CSS parameter adequate for AJAX functionality
+	 * @param	string		name of the CSS parameter
+	 * @return	boolean		CSS parameter adequate for AJAX functionality
 	 */
 	protected function parameterName2JS($parameterName) {
 
@@ -419,14 +420,30 @@ class tx_ghfontsize_pi1 extends tslib_pibase {
 		$JSparameters = array(
 			'font-size' => 'fontSize',
 			'height' => 'height',
+			'max-height' => 'maxHeight',
+			'min-height' => 'minHeight',
 			'width' => 'width',
+			'max-width' => 'maxWidth',
+			'min-width' => 'minWidth',
 			'left' => 'left',
 			'right' => 'right',
 			'top' => 'top',
 			'bottom' => 'bottom',
 			'margin' => 'margin',
+			'margin-top' => 'marginTop',
+			'margin-right' => 'marginRight',
+			'margin-bottom' => 'marginBottom',
+			'margin-left' => 'marginLeft',
 			'border-width' => 'borderWidth',
+			'border-top-width' => 'borderTopWidth',
+			'border-right-width' => 'borderRightWidth',
+			'border-bottom-width' => 'borderBottomWidth',
+			'border-left-width' => 'borderLeftWidth',
 			'padding' => 'padding',
+			'padding-top' => 'paddingTop',
+			'padding-right' => 'paddingRight',
+			'padding-bottom' => 'paddingBottom',
+			'padding-left' => 'paddingLeft',
 			'letter-spacing' => 'letterSpacing',
 			'line-height' => 'lineHeight',
 			'word-spacing' => 'wordSpacing'
