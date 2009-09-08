@@ -1,3 +1,9 @@
+2009-09-08 Gregor Hermens <gregor@a-mazing.de>
+
+	* embedded the JS code into a class
+	* added includePrototype
+	* release of version 0.4.5
+
 2009-09-06 Gregor Hermens <gregor@a-mazing.de>
 
 	* added new features to documentation

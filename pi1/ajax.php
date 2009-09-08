@@ -30,7 +30,7 @@ $fe_user = tslib_eidtools::initFeUser();
 
 $sessionValue = $fe_user->getKey('ses', 'tx_ghfontsize_value');
 
-$newValue = (float) t3lib_div::_GET('tx_ghfontsize_newvalue');
+$newValue = (float) t3lib_div::_POST('tx_ghfontsize_newvalue');
 
 if($newValue > 0 && $newValue != $sessionValue) {
 	$fe_user->setKey('ses', 'tx_ghfontsize_value', $newValue);

@@ -1,6 +1,7 @@
 plugin.tx_ghfontsize_pi1 {
 	show = menu
 	useAjax = {$plugin.tx_ghfontsize_pi1.useAjax}
+	includePrototype = {$plugin.tx_ghfontsize_pi1.includePrototype}
 	baseValue = {$plugin.tx_ghfontsize_pi1.baseValue}
 	increment = {$plugin.tx_ghfontsize_pi1.increment}
 	maxValue = {$plugin.tx_ghfontsize_pi1.maxValue}

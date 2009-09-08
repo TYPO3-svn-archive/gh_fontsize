@@ -26,19 +26,18 @@
  *
  *
  *
- *   56: class tx_ghfontsize_pi1 extends tslib_pibase
- *   72:     public function main($content, $conf)
- *  105:     protected function confFromFF()
- *  167:     protected function renderMenu()
- *  211:     protected function renderStyle()
- *  226:     protected function renderJS()
- *  244:     function changeFontSize(whatToDo)
- *  305:     protected function calculateValue()
- *  361:     protected function buildUrlParameters($getVars)
- *  392:     protected function checkAjaxRequirements()
- *  414:     protected function parameterName2JS($parameterName)
+ *   55: class tx_ghfontsize_pi1 extends tslib_pibase
+ *   71:     public function main($content, $conf)
+ *  104:     protected function confFromFF()
+ *  166:     protected function renderMenu()
+ *  210:     protected function renderStyle()
+ *  225:     protected function renderJS()
+ *  314:     protected function calculateValue()
+ *  370:     protected function buildUrlParameters($getVars)
+ *  401:     protected function checkAjaxRequirements()
+ *  423:     protected function parameterName2JS($parameterName)
  *
- * TOTAL FUNCTIONS: 10
+ * TOTAL FUNCTIONS: 9
  * (This index is automatically created/updated by the extension "extdeveval")
  *
  */
@@ -193,7 +192,7 @@ class tx_ghfontsize_pi1 extends tslib_pibase {
 			$urlParameters = $this->buildUrlParameters($getVars);
 			$url = str_replace('&', '&amp;', $this->pi_getPageLink($GLOBALS['TSFE']->id, '', $urlParameters));
 
-			$item = '<a href="'.$url. '" '. ($this->useAjax ? 'onclick="changeFontSize(\''.$element.'\'); return false;" ' : '').'class="tx-ghfontsize-'.$element.'" title="'.$this->pi_getLL($element, $element).'">'.$item.'</a>';
+			$item = '<a href="'.$url. '" '. ($this->useAjax ? 'onclick="GHfontsize.changeFontSize(\''.$element.'\'); return false;" ' : '').'class="tx-ghfontsize-'.$element.'" title="'.$this->pi_getLL($element, $element).'">'.$item.'</a>';
 			$item = $this->cObj->wrap($item, $this->conf['elementWrap']);
 
 			$content .= $item;
@@ -234,61 +233,71 @@ class tx_ghfontsize_pi1 extends tslib_pibase {
 			$maxValue = $baseValue;
 		}
 
-		$content = '
-	<script type="text/javascript" src="typo3/contrib/prototype/prototype.js"></script>
+		if($this->conf['includePrototype']) {
+			$content = '
+	<script type="text/javascript" src="typo3/contrib/prototype/prototype.js"></script>';
+		}
+		$content .= '
 	<script type="text/javascript">
 	/*<![CDATA[*/
 
-		var actValue = '.$this->value.';
+		var GHfontsizeClass = Class.create({
 
-		function changeFontSize(whatToDo) {
-			var newValue;
-			var baseValue = '.$baseValue.';
-			var minValue = '.$minValue.';
-			var maxValue = '.$maxValue.';
-			var increment = '. (float) $this->conf['increment'].';
-			var parameterUnit = "'.$this->conf['parameterUnit'].'";
+			initialize: function(baseValue, actValue, minValue, maxValue, increment) {
+				this.baseValue = baseValue;
+				this.actValue = actValue;
+				this.minValue = minValue;
+				this.maxValue = maxValue;
+				this.increment = increment;
+				this.newValue = this.actValue;
+			},
 
-			switch (whatToDo) {
-				case "smaller":
-					newValue = actValue - increment;
-					break;
-				case "reset":
-					newValue = baseValue;
-					break;
-				case "larger":
-					newValue = actValue + increment;
-					break;
-			}
+			changeFontSize: function(whatToDo) {
+				switch (whatToDo) {
+					case "smaller":
+						this.newValue = this.actValue - this.increment;
+						break;
+					case "reset":
+						this.newValue = this.baseValue;
+						break;
+					case "larger":
+						this.newValue = this.actValue + this.increment;
+						break;
+				}
 
-			if(newValue < minValue) {
-				newValue = minValue;
-			}
-			if(newValue > maxValue) {
-				newValue = maxValue;
-			}';
+				if(this.newValue < this.minValue) {
+					this.newValue = this.minValue;
+				}
+				if(this.newValue > this.maxValue) {
+					this.newValue = this.maxValue;
+				}';
 
 		if('body' == $this->conf['cssElement']) {
 			$content .= '
 
-			document.getElementsByTagName("body")[0].style.'.$this->JSparameterName.' = newValue + parameterUnit;
+				document.getElementsByTagName("body")[0].style.'.$this->JSparameterName.' = this.newValue + "'.$this->conf['parameterUnit'].'";
 			';
 		} else {
 			$content .= '
 
-			document.getElementById("'.substr($this->conf['cssElement'], 1).'").style.'.$this->JSparameterName.' = newValue + parameterUnit;
+				document.getElementById("'.substr($this->conf['cssElement'], 1).'").style.'.$this->JSparameterName.' = this.newValue + "'.$this->conf['parameterUnit'].'";
 			';
 		}
 		$content .= '
-			if(actValue != newValue) {
-				new Ajax.Request ( "index.php", {
-					method: "get",
-					parameters: "eID=gh_fontsize&tx_ghfontsize_newvalue=" + newValue,
-				});
+				if(this.actValue != this.newValue) {
+					this.saveToSession();
+				}
+				this.actValue = this.newValue;
+			},
 
-				actValue = newValue;
+			saveToSession: function() {
+				new Ajax.Request ( "index.php", {
+					parameters: {eID: "gh_fontsize", tx_ghfontsize_newvalue: this.newValue}
+				});
 			}
-		}
+		});
+
+		var GHfontsize = new GHfontsizeClass('.$baseValue.', '.$this->value.', '.$minValue.', '.$maxValue.', '. (float) $this->conf['increment'].');
 
 	/*]]>*/
 	</script>
