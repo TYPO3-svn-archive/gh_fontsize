@@ -1,3 +1,9 @@
+2009-09-17 Gregor Hermens <gregor@a-mazing.de>
+
+  * The new JS code from version 0.4.5 requires Prototype 1.6.0+, which is shipped with TYPO3 4.2+. If you still use TYPO3 4.1 please stay with version 0.4.4.
+  * added dependency on TYPO3 4.2+ to ext_emconf and documentation
+  * release of version 0.4.6
+
 2009-09-08 Gregor Hermens <gregor@a-mazing.de>
 
 	* embedded the JS code into a class
