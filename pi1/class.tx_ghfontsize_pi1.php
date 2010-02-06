@@ -175,6 +175,9 @@ class tx_ghfontsize_pi1 extends tslib_pibase {
 			$getVars = t3lib_div::_GET();
 		}
 
+		$value = $this->calculateValue(true);
+		$baseValue = (float) $this->conf['baseValue'];
+
 		foreach($this->conf['menuElements'] as $element) {
 			if(!in_array($element, array('smaller', 'reset', 'larger'))) {
 				continue;
@@ -192,7 +195,15 @@ class tx_ghfontsize_pi1 extends tslib_pibase {
 			$urlParameters = $this->buildUrlParameters($getVars);
 			$url = str_replace('&', '&amp;', $this->pi_getPageLink($GLOBALS['TSFE']->id, '', $urlParameters));
 
-			$item = '<a href="'.$url. '" '. ($this->useAjax ? 'onclick="GHfontsize.changeFontSize(\''.$element.'\'); return false;" ' : '').'class="tx-ghfontsize-'.$element.'" title="'.$this->pi_getLL($element, $element).'">'.$item.'</a>';
+			$class = '';
+			if (
+				($element == 'smaller' and $value < $baseValue) or
+				($element == 'reset' and $value == $baseValue) or
+				($element == 'larger' and $value > $baseValue)) {
+				$class = 'class="active" ';
+			}
+
+			$item = '<a href="'.$url. '" '. ($this->useAjax ? 'onclick="GHfontsize.changeFontSize(\''.$element.'\'); return false;" ' : '').'id="tx-ghfontsize-'.$element.'"'.$class.' title="'.$this->pi_getLL($element, $element).'">'.$item.'</a>';
 			$item = $this->cObj->wrap($item, $this->conf['elementWrap']);
 
 			$content .= $item;
@@ -233,11 +244,7 @@ class tx_ghfontsize_pi1 extends tslib_pibase {
 			$maxValue = $baseValue;
 		}
 
-		if($this->conf['includePrototype']) {
-			$content = '
-	<script type="text/javascript" src="typo3/contrib/prototype/prototype.js"></script>';
-		}
-		$content .= '
+		$content = '
 	<script type="text/javascript">
 	/*<![CDATA[*/
 
@@ -286,6 +293,21 @@ class tx_ghfontsize_pi1 extends tslib_pibase {
 		$content .= '
 				if(this.actValue != this.newValue) {
 					this.saveToSession();
+					if(this.newValue > this.baseValue && this.actValue <= this.baseValue) {
+						Element.removeClassName("tx-ghfontsize-smaller", "active");
+						Element.removeClassName("tx-ghfontsize-reset", "active");
+						Element.addClassName("tx-ghfontsize-larger", "active");
+					}
+					if(this.newValue == this.baseValue && this.actValue != this.baseValue) {
+						Element.removeClassName("tx-ghfontsize-smaller", "active");
+						Element.addClassName("tx-ghfontsize-reset", "active");
+						Element.removeClassName("tx-ghfontsize-larger", "active");
+					}
+					if(this.newValue < this.baseValue && this.actValue >= this.baseValue) {
+						Element.addClassName("tx-ghfontsize-smaller", "active");
+						Element.removeClassName("tx-ghfontsize-reset", "active");
+						Element.removeClassName("tx-ghfontsize-larger", "active");
+					}
 				}
 				this.actValue = this.newValue;
 			},
@@ -309,9 +331,11 @@ class tx_ghfontsize_pi1 extends tslib_pibase {
 	 * Calculates the actual value based on defaults, session data and piVars.
 	 * Writes value to session if necessary.
 	 *
-	 * @return	void
+	 * @param  boolean  If true the new value is NOT written to the session.
+	 *
+	 * @return	float  The new value
 	 */
-	protected function calculateValue() {
+	protected function calculateValue($dontSave=0) {
 		if(!empty($this->conf['baseValue'])) {
 			$this->value = (float) $this->conf['baseValue'];
 		}
@@ -354,11 +378,15 @@ class tx_ghfontsize_pi1 extends tslib_pibase {
 			$newValue = $maxValue;
 		}
 
-		if($this->value != $newValue and $newValue > 0) {
+		if(!$dontSave and $this->value != $newValue and $newValue > 0) {
 			$this->value = $newValue;
 			$GLOBALS['TSFE']->fe_user->setKey('ses', 'tx_ghfontsize_value', $this->value);
 		}
-		return true;
+		if($newValue > 0) {
+			return $newValue;
+		} else {
+			return $this->value;
+		}
 	}
 
 	/**

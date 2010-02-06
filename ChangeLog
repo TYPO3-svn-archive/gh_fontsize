@@ -1,3 +1,10 @@
+2010-02-06 Gregor Hermens <gregor@a-mazing.de>
+
+  * Prototype is now included via page.javascriptLibs, gh_fontsize now depends on TYPO3 4.3+.
+  * removed plugin.tx_ghfontsize_pi1.includePrototype from TS setup.
+  * added feature: Mark active links
+  * release of version 0.5.0
+
 2009-09-17 Gregor Hermens <gregor@a-mazing.de>
 
   * The new JS code from version 0.4.5 requires Prototype 1.6.0+, which is shipped with TYPO3 4.2+. If you still use TYPO3 4.1 please stay with version 0.4.4.

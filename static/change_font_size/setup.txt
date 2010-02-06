@@ -1,7 +1,6 @@
 plugin.tx_ghfontsize_pi1 {
 	show = menu
 	useAjax = {$plugin.tx_ghfontsize_pi1.useAjax}
-	includePrototype = {$plugin.tx_ghfontsize_pi1.includePrototype}
 	baseValue = {$plugin.tx_ghfontsize_pi1.baseValue}
 	increment = {$plugin.tx_ghfontsize_pi1.increment}
 	maxValue = {$plugin.tx_ghfontsize_pi1.maxValue}
@@ -33,6 +32,10 @@ plugin.tx_ghfontsize_pi1 {
 		.tx-ghfontsize-clear {clear: left;}
 	)
 }
+
+[globalVar = LIT:1 = {$plugin.tx_ghfontsize_pi1.useAjax}]
+	page.javascriptLibs.Prototype = 1
+[global]
 
 page.headerData.9999 =< plugin.tx_ghfontsize_pi1
 page.headerData.9999.show = style
