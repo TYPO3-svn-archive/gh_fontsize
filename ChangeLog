@@ -1,6 +1,8 @@
 2010-02-19 Gregor Hermens <gregor@a-mazing.de>
 
-	* added feature: Added class for RealURL autoconf
+	* added feature: Added class for RealURL autoconf.
+	* added feature: Added optional rel="nofollow" to links to avoid SEO issues.
+	* release of version 0.5.1
 
 2010-02-06 Gregor Hermens <gregor@a-mazing.de>
 

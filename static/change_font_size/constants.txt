@@ -1,6 +1,8 @@
 plugin.tx_ghfontsize_pi1 {
 	# cat=plugin.tx_ghfontsize_pi1/basics/a1; type=boolean; label=useAjax: change font size w/o reloading the page, use ajax to update the user's session.
 	useAjax = 1
+	# cat=plugin.tx_ghfontsize_pi1/basics/a2; type=boolean; label=markLinksNoFollow: mark Links with rel=nofollow to avoid identical content with diffrent URLs (SEO).
+	markLinksNoFollow = 1
 	# cat=plugin.tx_ghfontsize_pi1/basics/a3; type=string; label=baseValue: Numerical default value for the fontsize, either integer or floating point.
 	baseValue = 100
 	# cat=plugin.tx_ghfontsize_pi1/basics/b1; type=string; label=increment: For each click on the menu the actual value is in- or decreased by this increment. May be integer or floating point.

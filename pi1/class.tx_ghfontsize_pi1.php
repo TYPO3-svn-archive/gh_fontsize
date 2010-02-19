@@ -203,7 +203,7 @@ class tx_ghfontsize_pi1 extends tslib_pibase {
 				$class = 'class="active" ';
 			}
 
-			$item = '<a href="'.$url. '" '. ($this->useAjax ? 'onclick="GHfontsize.changeFontSize(\''.$element.'\'); return false;" ' : '').'id="tx-ghfontsize-'.$element.'"'.$class.' title="'.$this->pi_getLL($element, $element).'">'.$item.'</a>';
+			$item = '<a href="'.$url. '" '. ($this->useAjax ? 'onclick="GHfontsize.changeFontSize(\''.$element.'\'); return false;" ' : '').'id="tx-ghfontsize-'.$element.'"'.$class.' title="'.$this->pi_getLL($element, $element).'"'.($this->conf['markLinksNoFollow'] ? ' rel="nofollow"' : '').'>'.$item.'</a>';
 			$item = $this->cObj->wrap($item, $this->conf['elementWrap']);
 
 			$content .= $item;

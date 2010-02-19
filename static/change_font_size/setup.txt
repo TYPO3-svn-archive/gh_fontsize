@@ -1,6 +1,7 @@
 plugin.tx_ghfontsize_pi1 {
 	show = menu
 	useAjax = {$plugin.tx_ghfontsize_pi1.useAjax}
+	markLinksNoFollow = {$plugin.tx_ghfontsize_pi1.markLinksNoFollow}
 	baseValue = {$plugin.tx_ghfontsize_pi1.baseValue}
 	increment = {$plugin.tx_ghfontsize_pi1.increment}
 	maxValue = {$plugin.tx_ghfontsize_pi1.maxValue}
@@ -25,7 +26,8 @@ plugin.tx_ghfontsize_pi1 {
 		.tx-ghfontsize-pi1 {background-color: #eee; padding: 2px;}
 		.tx-ghfontsize-pi1 ul {margin: 0; padding: 0; list-style: none;}
 		.tx-ghfontsize-pi1 li {display: inline; float: left; padding: 2px;}
-		.tx-ghfontsize-pi1 a {text-decoration: none; }
+		.tx-ghfontsize-pi1 a {text-decoration: none;}
+		.tx-ghfontsize-pi1 a.active {font-weight: bold;}
 		.tx-ghfontsize-smaller {font-size: .8em; line-height: 1.5em;}
 		.tx-ghfontsize-reset {font-size: 1em; line-height: 1.2em;}
 		.tx-ghfontsize-larger {font-size: 1.2em; line-height: 1em;}
