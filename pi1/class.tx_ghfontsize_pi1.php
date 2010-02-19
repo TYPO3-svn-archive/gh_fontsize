@@ -331,8 +331,7 @@ class tx_ghfontsize_pi1 extends tslib_pibase {
 	 * Calculates the actual value based on defaults, session data and piVars.
 	 * Writes value to session if necessary.
 	 *
-	 * @param  boolean  If true the new value is NOT written to the session.
-	 *
+	 * @param  boolean  $dontSave: If true the new value is NOT written to the session.
 	 * @return	float  The new value
 	 */
 	protected function calculateValue($dontSave=0) {

@@ -1,3 +1,7 @@
+2010-02-19 Gregor Hermens <gregor@a-mazing.de>
+
+	* added feature: Added class for RealURL autoconf
+
 2010-02-06 Gregor Hermens <gregor@a-mazing.de>
 
   * Prototype is now included via page.javascriptLibs, gh_fontsize now depends on TYPO3 4.3+.
